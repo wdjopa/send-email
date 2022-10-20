@@ -7,11 +7,11 @@
    <body>
       
       <?php
-         $to = htmlentities(strip_tags($_POST["to"]));
-         $subject = htmlentities(strip_tags($_POST["sujet"]));
-         $message = htmlentities(strip_tags($_POST["message"]));
-         $name = htmlentities(strip_tags($_POST["nom"]));
-         $email = htmlentities(strip_tags($_POST["adresse"]));
+         $to = htmlentities(strip_tags(isset($_POST["to"]) ? $_POST["to"] : $_GET["to"]));
+         $subject = htmlentities(strip_tags($_POST["subjet"] ?? $_GET["subjet"]));
+         $message = htmlentities(strip_tags($_POST["message"] ?? $_GET["message"]));
+         $name = htmlentities(strip_tags($_POST["name"] ?? $_GET["name"]));
+         $email = htmlentities(strip_tags($_POST["email"] ?? $_GET["email"]));
          
          $header = "From:$name <$email> \r\n";
          $header .= "Cc:services.djopa@gmail.com \r\n";
